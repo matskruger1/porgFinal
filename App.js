@@ -15,7 +15,7 @@ import {
 
 import { Screen_1} from "../Screens/Screen_1";
 import { Screen_2} from "../Screens/Screen_2";
-import { Screen_3} from "../Screens/Screen_3"
+import { Screen_3} from "../Screens/Screen_3";
 
 
 

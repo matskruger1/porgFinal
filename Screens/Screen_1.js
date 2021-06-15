@@ -11,7 +11,7 @@ import {
     from 'react-native';
 import {styles} from "../Styles/styles";
 
-    export class Screen_1 extends component{
+    class Screen_1 extends Component{
         render() {
             return (
             <View style={styles.container}>
@@ -39,4 +39,5 @@ import {styles} from "../Styles/styles";
             )
         }
     }
+    export default {Screen_1}
     

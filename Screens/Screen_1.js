@@ -21,23 +21,23 @@ import {styles} from "../Styles/styles";
                  Go to Screen 2 </Text>
 
                  <Text style={styles.texto}
-                onPress = {() => this.props.navigator.navigate ("Screen_import")}> 
+                onPress = {() => this.props.navigator.navigate ("Screen_Import")}> 
                  Importar contactos </Text>
                  <Text style={styles.texto}
-                onPress = {() => this.props.navigator.navigate ("Screen_ViewImportedCards")}> 
-                 contactos importados </Text>
-            <View styles = {styles.burguerContainer}>
+                onPress = {() => this.props.navigator.navigate ("Screen_ViewCards")}> 
+                 contactos importados </Text> 
+          {/*   <View styles = {styles.burguerContainer}>
                 <TouchableOpacity onPress= {()=> this.props.navigate.openDrawer()}>
                     <View style= {styles.burguerButton}>
                    <Text style= {styles.burguerText}> =  </Text>
                    </View>
                 </TouchableOpacity>
-            </View>
+            </View> */}
             
             
             </View>
             )
         }
     }
-    export default {Screen_1}
+    export default Screen_1
     

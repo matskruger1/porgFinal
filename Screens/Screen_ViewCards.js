@@ -43,7 +43,7 @@ class Screen_ViewCards extends Component {
     }
 
     render(){
-        const value = this.state.importedUsers.map (item =>
+        const values = this.state.importedUsers.map (item =>
             /*  saber que hacia el .map */
          
             /*   explicar como funciona esta key */
@@ -54,7 +54,7 @@ class Screen_ViewCards extends Component {
         return (
             <View>
             <Text > Mostramos los valores  importados</Text>
-            {values}
+            {/* {values} * cambiar a flatlist/}
            {/*  este values es para que muestre la info que buscamos en la api? */}
          <TouchableOpacity  onPress ={this.storeData.bind(this) }>
              <View>

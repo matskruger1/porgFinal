@@ -14,6 +14,10 @@ import {
     import {styles} from "../Styles/styles";
 
      class Screen_2 extends Component{
+        constructor(props){
+            super(props);
+            this.state ={}
+        }
         render() {
             return (
                 <View style={styles.container}>

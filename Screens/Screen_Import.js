@@ -60,7 +60,7 @@ class Screen_Import extends Component {
     deber reconvertirlo  */
 
     render(){
-        const value = this.state.users.map (item =>
+        const values = this.state.users.map (item =>
            /*  saber que hacia el .map */
         
            /*   explicar como funciona esta key */

@@ -89,6 +89,8 @@ async storeData(value){
             phone={item.phone}
             address={item.location.street.name} 
             number={item.location.street.number}
+            registro={item.registered.date}
+          
 
                       />
 

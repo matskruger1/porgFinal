@@ -15,6 +15,7 @@ export default class Card extends Component {
                 <View style={card.item}><Text>Edad: {this.props.age} años</Text></View>
                 <View style={card.item}><Text>Tel: {this.props.phone} </Text></View>
                 <View style={card.item}><Text>Direccion: {this.props.number} {this.props.address}</Text></View>
+                <View style={card.item}><Text>Registrado:  {this.props.registro} </Text></View>
             </View>
         </View>
   

@@ -83,10 +83,14 @@ async storeData(value){
             name={item.name.first} 
             lastname={item.name.last} 
             id={item.login.uuid} 
-            picture={item.picture.thumbnail} 
+            image={item.picture.thumbnail} 
             age={item.dob.age} 
             email={item.email}
-          />
+            phone={item.phone}
+            address={item.location.street.name} 
+            number={item.location.street.number}
+
+                      />
 
           <TouchableOpacity onPress={() => this.storeData(item)}><Text>Guardar</Text></TouchableOpacity>
         </View>

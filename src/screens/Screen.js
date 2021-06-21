@@ -10,21 +10,19 @@ export default class Screen extends Component {
 constructor() {
   super();
   this.state = {
-    pedido: "",
-    contactosBackup: [],
-    contactos: [],
-    cantidad: " ",
-    almacenar:[],
+    show: [],
+    likes:[],
+    dislikes:[],
     activity: false,
   }
 }  
 
 
-getDataFromApi(q) {
-  getData(q)
+getDataFromApi() {
+  getData(1)
   .then((result)=> {
     this.setState({activity: true})
-    this.setState({contactos: result, activity: false})
+    this.setState({show: result, activity: false})
   }) 
   
 }
@@ -47,31 +45,20 @@ async componentDidMount(){
   
 }
 
-async storeData(value){
-  
+async savePerson(item){
   try{
-    console.log(this.state.almacenar)
-
-    this.state.almacenar.push(value)
-
-    console.log(this.state.almacenar)
-
-    const jsonContacts = JSON.stringify(this.state.almacenar)
-  
-    await AsyncStorage.setItem("contactos", jsonContacts);
-
-    let quantity = this.state.almacenar.length
-
-    let eliminado = this.state.contactos.filter((contacto) => {
-        return contacto.login.uuid !== value.login.uuid
-    })
-
-    this.setState({
-      contactos: eliminado,
-      cantidad: quantity,
-    })
-   
+    await this.state.likes.push(item)
+    this.getDataFromApi()
   } catch(e) {
+    console.log(e)
+  }
+}
+
+async deletePerson(item) {
+  try {
+    await this.state.dislikes.push(item)
+    this.getDataFromApi()
+  } catch (e) {
     console.log(e)
   }
 }
@@ -94,13 +81,14 @@ async storeData(value){
             address={item.location.street.name} 
             number={item.location.street.number}
             registro={item.registered.date}
-          
+          />
 
-                      />
+          <TouchableOpacity onPress={() => this.savePerson(item)}><Text>Guardar</Text></TouchableOpacity>
 
-          <TouchableOpacity onPress={() => this.storeData(item)}><Text>Guardar</Text></TouchableOpacity>
+          <TouchableOpacity onPress={() => this.deletePerson(item)}><Text>Eliminar</Text></TouchableOpacity>
 
-          <TouchableOpacity><Text>Eliminar</Text></TouchableOpacity>
+          <Text>{this.state.likes.length}</Text>
+          <Text>{this.state.dislikes.length}</Text>
 
         </View>
   
@@ -112,27 +100,20 @@ async storeData(value){
     return (
     <View>
       
-        { this.state.activity
-        ? <ActivityIndicator
-        color={"blue"}
-        size={60}/>
-
-        : <View>
+        <View>
           <FlatList
-          data={this.state.contactos}
+          data={this.state.show}
           keyExtractor={this.keyExtractor}
           renderItem={this.renderItem}
           />
           <View>
-            <TextInput onChangeText={ value => this.setState({pedido: value})}></TextInput>
-            <TouchableOpacity onPress = {() => this.getDataFromApi(this.state.pedido)}>
+            <TouchableOpacity onPress = {() => this.getDataFromApi()}>
             <Text>Añadir</Text>
             </TouchableOpacity>
           </View>
-          {/* acá va el alert con this.state.cantidad */}
           </View>
           
-        }
+        
       
   
     </View>

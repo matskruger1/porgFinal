@@ -35,7 +35,7 @@ class Screen_ViewCards extends Component {
             const resultado = await AsyncStorage.getItem("Users")
          /*    esto va al asyncstorage a la funcion getData y vamos a llamar a la key bajo al nombre que decidimos
          almacenar los datos*/
-         console.log (resultado)
+         // console.log (resultado)
         .this.state({importedUsers:JSON.parse(resultado)})
         }catch(e) {
             console.log(e)

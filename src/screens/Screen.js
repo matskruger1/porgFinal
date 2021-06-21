@@ -50,8 +50,11 @@ async componentDidMount(){
 async storeData(value){
   
   try{
+    console.log(this.state.almacenar)
 
     this.state.almacenar.push(value)
+
+    console.log(this.state.almacenar)
 
     const jsonContacts = JSON.stringify(this.state.almacenar)
   
@@ -84,7 +87,8 @@ async storeData(value){
             lastname={item.name.last} 
             id={item.login.uuid} 
             image={item.picture.thumbnail} 
-            age={item.dob.age} 
+            age={item.dob.age}
+            birthdate={item.dob.date}
             email={item.email}
             phone={item.phone}
             address={item.location.street.name} 
@@ -95,6 +99,9 @@ async storeData(value){
                       />
 
           <TouchableOpacity onPress={() => this.storeData(item)}><Text>Guardar</Text></TouchableOpacity>
+
+          <TouchableOpacity><Text>Eliminar</Text></TouchableOpacity>
+
         </View>
   
       )

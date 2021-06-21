@@ -10,24 +10,33 @@ const card = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center', 
-        alignItems: 'center'
+        alignItems: 'center',
+        padding: 15,
     },
     item: {
         flex: 1,
         fontSize: 10,
+
     },
     card: {
-        backgroundColor: "lightgray",
+        backgroundColor: "#F5F5F5",
         borderWidth: 1,
         borderRadius: 20,
+        borderColor: "#F5F5F5",
         margin: 5,
         width: 250,
         height: 250,
         padding: 5
     },
     image: {
-        width: 50, 
-        height: 50,
+
+        width: 80, 
+        height: 80,
+        margin: "auto",
+        marginBottom: 10,
+        borderRadius: 5,
+
+        
     }
 })
 

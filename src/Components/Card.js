@@ -23,7 +23,7 @@ export default class Card extends Component {
                 <Image style={card.image} source={{uri: this.props.image}}></Image>
                 <View style={card.item}><Text>Nombre: {this.props.name} {this.props.lastname}</Text></View> 
                 <View style={card.item}><Text>Email: {this.props.email}</Text></View>
-                <View style={card.item}><Text>{this.state.birthdate} {this.props.age} años</Text></View>
+                <View style={card.item}><Text>{this.state.birthdate} - {this.props.age} años</Text></View>
                 <View style={card.item}><Text>Tel: {this.props.phone} </Text></View>
                 <View style={card.item}><Text>Direccion: {this.props.number} {this.props.address}</Text></View>
                 <View style={card.item}><Text>Registrado:  {this.state.registro} </Text></View>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { card } from '../styles/harrystyles';
 
+
 import { Text, View, Image } from "react-native";
 
 import moment from "moment"; 

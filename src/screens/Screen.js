@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Card from '../components/Card';
 import { getData } from '../api/RandomUser';
+import { card } from '../styles/harrystyles';
+
 
 import { View, ActivityIndicator, TouchableOpacity, Text, FlatList, TextInput } from "react-native";
 
@@ -98,9 +100,9 @@ async storeData(value){
 
                       />
 
-          <TouchableOpacity onPress={() => this.storeData(item)}><Text>Guardar</Text></TouchableOpacity>
+          <TouchableOpacity onPress={() => this.storeData(item)}><Text style= {card.boton}>Guardar</Text></TouchableOpacity>
 
-          <TouchableOpacity><Text>Eliminar</Text></TouchableOpacity>
+          <TouchableOpacity><Text style= {card.boton}>Eliminar</Text></TouchableOpacity>
 
         </View>
   
@@ -126,7 +128,7 @@ async storeData(value){
           <View>
             <TextInput onChangeText={ value => this.setState({pedido: value})}></TextInput>
             <TouchableOpacity onPress = {() => this.getDataFromApi(this.state.pedido)}>
-            <Text>Añadir</Text>
+            <Text style= {card.boton}>Añadir</Text>
             </TouchableOpacity>
           </View>
           {/* acá va el alert con this.state.cantidad */}

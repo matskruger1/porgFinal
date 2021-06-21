@@ -37,6 +37,16 @@ const card = StyleSheet.create({
         borderRadius: 5,
 
         
+    },
+    boton: {
+    
+        margin: "auto",
+        border: 10,
+        backgroundColor: "lightgray",
+        borderWidth: 5,
+        borderRadius: 5,
+        padding: 5,
+        
     }
 })
 
@@ -58,6 +68,11 @@ const footer = StyleSheet.create({
         fontSize: 35, 
         padding: 30,
     },
+
+
+
+
+
 })
 
 export { styles, header, footer, card }

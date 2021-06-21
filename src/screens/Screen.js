@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Card from '../components/Card';
 import { getData } from '../api/RandomUser';
+import { card } from '../styles/harrystyles';
+
 
 import { View, ActivityIndicator, TouchableOpacity, Text, FlatList, TextInput } from "react-native";
 
@@ -83,9 +85,9 @@ async deletePerson(item) {
             registro={item.registered.date}
           />
 
-          <TouchableOpacity onPress={() => this.savePerson(item)}><Text>Guardar</Text></TouchableOpacity>
+          <TouchableOpacity onPress={() => this.savePerson(item)}><Text style= {card.boton}>Guardar</Text></TouchableOpacity>
 
-          <TouchableOpacity onPress={() => this.deletePerson(item)}><Text>Eliminar</Text></TouchableOpacity>
+          <TouchableOpacity onPress={() => this.deletePerson(item)}><Text style= {card.boton}>Eliminar</Text></TouchableOpacity>
 
           <Text>{this.state.likes.length}</Text>
           <Text>{this.state.dislikes.length}</Text>
@@ -108,7 +110,7 @@ async deletePerson(item) {
           />
           <View>
             <TouchableOpacity onPress = {() => this.getDataFromApi()}>
-            <Text>Añadir</Text>
+              <Text style= {card.boton}>Añadir</Text>
             </TouchableOpacity>
           </View>
           </View>

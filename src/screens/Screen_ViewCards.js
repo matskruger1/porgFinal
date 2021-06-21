@@ -18,7 +18,7 @@ import {
     StatusBar
      }
     from 'react-native';
-    import {styles} from "../Styles/styles";
+    import {styles} from "../styles/harrystyles";
 
 class Screen_ViewCards extends Component {
     constructor(){

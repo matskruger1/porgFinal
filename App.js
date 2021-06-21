@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { styles } from './src/styles/styles';
+import { styles, header, footer } from './src/styles/harrystyles';
 import Header from './src/components/Header';
 import Screen from './src/screens/Screen';
 import Footer from './src/components/Footer';
@@ -19,7 +19,7 @@ export default class App extends Component {
 			return (
 				<View style={styles.layout}>
 
-					<View style={styles.layout}>
+					<View style={header.contentStyle}>
 						<Header/>
 					</View>
 
@@ -27,7 +27,7 @@ export default class App extends Component {
 						<Screen/>
 					</View>
 
-					<View style={styles.layout}>
+					<View style={footer.contentStyle}>
 						<Footer/>
 					</View>
 				

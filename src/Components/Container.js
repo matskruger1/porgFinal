@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Tarjeta from './Tarjeta';
+import Card from './Card';
 
 import { FlatList, View, Text, TouchableOpacity } from "react-native";
 
@@ -18,12 +18,13 @@ renderItem = ({item}) => {
     <TouchableOpacity onPress={() => this.props.seleccionar(item)}>
       {/* esto no anda TODAVÍA porque hay un problema con el this.state.color */}
         
-        <Tarjeta 
-          name={item.name.first} 
-          lastname={item.name.last} 
-          id={item.login.uuid}
-          email={item.email}
-          age={item.dob.age}
+        <Card 
+            name={item.name.first} 
+            lastname={item.name.last} 
+            id={item.login.uuid}
+            email={item.email}
+            age={item.dob.age}
+            image={item.picture.thumbnail}
         />
 
       </TouchableOpacity>

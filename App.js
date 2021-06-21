@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { styles } from './src/styles/Styles';
-import Header from './src/Components/Header';
-import Screen from './src/screens/Screen_2';
+import { styles } from './src/styles/styles';
+import Header from './src/components/Header';
+import Screen from './src/screens/Screen';
 import Footer from './src/components/Footer';
 
 

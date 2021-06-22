@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
-import { styles, header, footer } from './src/styles/harrystyles';
+import { styles, header, footer, card } from './src/styles/harrystyles';
 import Header from './src/components/Header';
 import Screen from './src/screens/Screen';
 import Footer from './src/components/Footer';
 
+import 'react-native-gesture-handler'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import { View } from "react-native";
+
+import { View, TouchableOpacity, Text } from "react-native";
+
+const Stack = createStackNavigator();
 
 export default class App extends Component {
   
@@ -26,6 +32,13 @@ export default class App extends Component {
 					<View style={styles.layout}>
 						<Screen/>
 					</View>
+					
+					<NavigationContainer>
+						<Stack.Navigator>
+							<Stack.Screen name="guardados" component={Screen_Likes} />
+							<Stack.Screen name="eliminados" component={Screen_Dislikes} />
+						</Stack.Navigator>
+					</NavigationContainer>
 
 					<View style={footer.contentStyle}>
 						<Footer/>

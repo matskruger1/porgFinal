@@ -28,10 +28,10 @@ import {
                 <Text styles={style.texto} onPress= {()=> this.props.navigation.navigate ("Screen_2")}>Go Screen 2 </Text>
 
                 <Text style={styles.texto}
-                onPress = {() => this.props.navigator.navigate ("Screen_Import")}> 
+                onPress = {() => this.props.navigation.navigate ("Screen_Likes")}> 
                  Importar contactos </Text>
                  <Text style={styles.texto}
-                onPress = {() => this.props.navigator.navigate ("Screen_ViewCards")}> 
+                onPress = {() => this.props.navigation.navigate ("Screen_")}> 
                  contactos importados </Text> 
             </View>
             )

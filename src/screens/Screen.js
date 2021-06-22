@@ -36,6 +36,8 @@ async componentDidMount(){ // ni idea
 async savePerson(item){
   try{
     await this.state.likes.push(item)
+    const liked = JSON.stringify(this.state.likes)
+    await AsyncStorage.setItem('@likes', liked)
     this.getDataFromApi()
   } catch(e) {
     console.log(e)
@@ -47,6 +49,8 @@ async savePerson(item){
 async deletePerson(item) {
   try {
     await this.state.dislikes.push(item)
+    const disliked = JSON.stringify(this.state.dislikes)
+    await AsyncStorage.setItem('@dislikes', disliked)
     this.getDataFromApi()
   } catch (e) {
     console.log(e)
@@ -106,6 +110,13 @@ async deletePerson(item) {
             </TouchableOpacity>
           </View>
           </View>
+
+          <View>
+						<Text style={card.boton} onPress = {() => this.props.navigation.navigate("Screen_Likes")}>Ver guardados</Text>
+					</View>
+					<View>
+						<Text style={card.boton} onPress = {() => this.props.navigation.navigate("Screen_Dislikes")}>Ver eliminados</Text>
+					</View>
           
         {/* kruger fijate como hacer para que no arranque de cero */}
       

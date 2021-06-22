@@ -29,21 +29,7 @@ getDataFromApi() {
   
 }
 
-async componentDidMount(){
-  await AsyncStorage.removeItem("contactos")
-
-  try {
-    let obtenerContactos = await AsyncStorage.getItem("contactos")
-    obtenerContactos = JSON.parse(obtenerContactos)
-  
-    if(obtenerContactos !== null) {
-        this.setState({ 
-            almacenar: obtenerContactos,
-        })
-    }
-  } catch(e) {
-    console.log(e);
-  }
+async componentDidMount(){ // ni idea
   
 }
 
@@ -54,6 +40,8 @@ async savePerson(item){
   } catch(e) {
     console.log(e)
   }
+
+  // kruger guardate esto en un async storage que son los likes
 }
 
 async deletePerson(item) {
@@ -63,7 +51,11 @@ async deletePerson(item) {
   } catch (e) {
     console.log(e)
   }
+
+  // y guardate tambien estos dislikes en el storage
 }
+
+// hacete tambien vos lo de la navegacion para ir a una pagina donde mostremos todos estos likes/dislikes con un flatlist y listo medio que terminamos
 
   keyExtractor = (item, idx) => idx.toString();
   renderItem = ({item}) => {
@@ -110,12 +102,12 @@ async deletePerson(item) {
           />
           <View>
             <TouchableOpacity onPress = {() => this.getDataFromApi()}>
-              <Text style= {card.boton}>Añadir</Text>
+              <Text style={card.boton}>Empezar</Text>
             </TouchableOpacity>
           </View>
           </View>
           
-        
+        {/* kruger fijate como hacer para que no arranque de cero */}
       
   
     </View>

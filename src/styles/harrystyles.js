@@ -29,24 +29,23 @@ const card = StyleSheet.create({
         padding: 5
     },
     image: {
-
         width: 80, 
         height: 80,
         margin: "auto",
+        alignItems: "center",
+        justifyContent: "center",
         marginBottom: 10,
         borderRadius: 5,
-
-        
     },
     boton: {
-    
         margin: "auto",
-        border: 10,
+        marginTop: 5,
+        width: 80,
         backgroundColor: "lightgray",
-        borderWidth: 5,
         borderRadius: 5,
         padding: 5,
-        
+        alignItems: "center",
+        justifyContent: "center",
     }
 })
 

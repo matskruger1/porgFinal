@@ -41,7 +41,7 @@ export default class App extends Component {
 						<Stack.Navigator
 						title="Pag principal"
 						 screenOptions={{ 
-						headerstyle:{backgroundColor:"organge"},
+						headerstyle:{backgroundColor:"orange"},
 						headerTintColor:"white"
 						}}>
 							<Stack.Screen name="guardados" component={Screen_Likes} options ={{title:"Guardados"}} />

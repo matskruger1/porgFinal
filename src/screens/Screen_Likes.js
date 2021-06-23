@@ -1,18 +1,18 @@
 import React, {Component} from "react";
 import { render } from "react-dom";
+import Card from '../components/Card';
 import { 
-
     View,
     Text,
+    FlatList,
     ScrollView,
     StyleSheet,
     TextInput,
     TouchableOpacity,
     StatusBar
-     }
-    from 'react-native';
-    import {styles} from "../styles/harrystyles";
-    import AsyncStorage from "@react-native-async-storage/async-storage";
+  } from 'react-native';
+import { card } from "../styles/harrystyles";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class Screen_Likes extends Component {
     constructor(){
@@ -97,11 +97,11 @@ Json.parse va a tratar de convertir el string obtenido en un objeto , este proce
         </View>
 
         {/* navegacion de pag a pagina */}
-        <View style= {style.container}>
-          <Text style = {style.text}
+        <View>
+          <Text
           onPress= {()=> this.props.navigation.navigate("Screen_Dislikes")}>Ir a la pag de dislikes </Text>
           
-          <Text style = {style.text}
+          <Text
           onPress= {()=> this.props.navigation.navigate.push("Screen_Likes")}>Ir a la pag de dislikes </Text>
         </View>
       

@@ -51,6 +51,7 @@ async savePerson(item){
   } catch(e) {
     console.log(e)
   }
+}
 
    /* aca realizamos que las tarjetas que son likeadas sean guardadas en el async de likeos
    el primer await espera que me devuelva la promesa y una vez devuelta , me va a pushear una tarketa likeada.

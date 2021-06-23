@@ -19,6 +19,11 @@ constructor() {
   }
 }  
 
+/*  El método constructor es necesario para poder definir la estructura de un componente.
+La función super en el constructor es necesaria en react ya que hereda de su clase padre.
+El constructor es el único lugar donde debes asignar this.state directamente. Este va a ser un objeto literal.
+adentro ponemos distintos arrays ya sea donde se van a guardar los likes , dislikes y las tarjetas que van a ser mostradas
+ */
 
 getDataFromApi() {
   getData(1)
@@ -29,8 +34,12 @@ getDataFromApi() {
   
 }
 
+/* aca llamamos  al fetch que hemos realizado en la api para que nos retorne la informacion que esta nos trae
+el getData le pongo propiedad 1 para que me traiga unicamente una tarjeta 
+entender bien que setean estos states */
+
 async componentDidMount(){ // ni idea
-  
+  // aca deberiamos de poner el focus para que se vuelva a renderizar cada screen cuando cargamos la info
 }
 
 async savePerson(item){
@@ -43,9 +52,11 @@ async savePerson(item){
     console.log(e)
   }
 
-  // kruger guardate esto en un async storage que son los likes
-}
-
+   /* aca realizamos que las tarjetas que son likeadas sean guardadas en el async de likeos
+   el primer awat espera que me devuelva la promesa y una vez devuelta , me va a pushear una tarketa likeada (n)
+  por medio de un await vamos a pushear 
+  Vamos a tener que convertir el objeto en un string, por medio de la función JSON.stringify
+  el await va a esperar que se resuelva la promesa y luego va a setear  */
 
   
 
@@ -59,7 +70,12 @@ async deletePerson(item) {
     console.log(e)
   }
 
-  // y guardate tambien estos dislikes en el storage
+  /* aca realizamos que las tarjetas que son dislikeadas o borradas sean guardadas en el async de la papelera
+  el primer await espera que nos devuelva una promesa y una vez resuelt va a pushear una tarjeta al array de tarjetas dislikeadas
+  luego realizamos una variable en la cual se va a guardar  la info que es devuelta  porque vamos a tener que convertir el objeto en un string,
+   por medio de la función JSON.stringify
+   una vez transforado el objeto vamos a guardarlo en el asyncStorage con la clave dislike y el valor dislike
+   una vez realizado todo esto (busca recien ahora la info de la api , la trae o como funciona )  */
 }
 
 
@@ -67,6 +83,8 @@ async deletePerson(item) {
 
   keyExtractor = (item, idx) => idx.toString();
   renderItem = ({item}) => {
+
+  /*   el key extractor y el render item son propiedades obligatorias para realizar un flatlist */
     return(
 
         <View>
@@ -84,12 +102,16 @@ async deletePerson(item) {
             number={item.location.street.number}
             registro={item.registered.date}
           />
+          {/* componente card con cada uno de sus propiedades que son traidas */}
 
           <TouchableOpacity onPress={() => this.savePerson(item)}><Text style= {card.boton}>Guardar</Text></TouchableOpacity>
+
+        {/*   ambos boton , el de guaradr y el de eliminar  */}
 
           <TouchableOpacity onPress={() => this.deletePerson(item)}><Text style= {card.boton}>Eliminar</Text></TouchableOpacity>
 
           <Text>{this.state.likes.length}</Text>
+          {/* te devuelve el largo del array de likes y del de dislikes */}
           <Text>{this.state.dislikes.length}</Text>
 
         </View>
@@ -114,6 +136,7 @@ async deletePerson(item) {
             <TouchableOpacity onPress = {() => this.getDataFromApi()}>
               <Text style={card.boton}>Empezar</Text>
             </TouchableOpacity>
+          {/*   no se que pasa aca  */}
           </View>
           </View>
 
@@ -125,18 +148,7 @@ async deletePerson(item) {
 					</View>
           
         {/* kruger fijate como hacer para que no arranque de cero */}
-      
-      {/*   <NavigationContainer>     
-      <Stack.Navigator screenOptions={{headerStyle:{backgroundColor:"orange"},
-    headerTintColor:"white"}}>
-        <Stack.Screen name="Screen 1" component = {Screen_1} options ={{title:"Menu"}}/>
-        <Stack.Screen name="Screen 2 " component = {Screen_2} options ={{title:"importar", headerTintColor:"red"}}/>
-        <Stack.Screen name="Screen 3 " component = {Screen_3} initialParams = {{valor: 0}}/>
-        <Stack.Screen name= "Screen_Import" component= {Screen_Import} options ={{title:"Importar"}}/>
-        <Stack.Screen name= "Screen_ViewImportedCards" component= {Screen_ViewImportedCards} options ={{title:" Contactos Importados"}}/>
-      </Stack.Navigator>
-
-      </NavigationContainer> */}
+    
 
   
     </View>

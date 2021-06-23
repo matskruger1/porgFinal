@@ -13,8 +13,11 @@ import {
   } from 'react-native';
 import { card } from "../styles/harrystyles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import 'react-native-gesture-handler'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-class Screen_Likes extends Component {
+export class Screen_Likes extends Component {
     constructor(){
         super();
         this.state={
@@ -102,7 +105,7 @@ Json.parse va a tratar de convertir el string obtenido en un objeto , este proce
           onPress= {()=> this.props.navigation.navigate("Screen_Dislikes")}>Ir a la pag de dislikes </Text>
           
           <Text
-          onPress= {()=> this.props.navigation.navigate.push("Screen_Likes")}>Ir a la pag de dislikes </Text>
+          onPress= {()=> this.props.navigation.push("Screen_Likes")}>Ir a la pag de likes </Text>
         </View>
       
   
@@ -112,5 +115,4 @@ Json.parse va a tratar de convertir el string obtenido en un objeto , este proce
   )}  
 }
 
-export default Screen_Likes
 

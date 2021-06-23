@@ -53,10 +53,17 @@ async savePerson(item){
   }
 
    /* aca realizamos que las tarjetas que son likeadas sean guardadas en el async de likeos
-   el primer awat espera que me devuelva la promesa y una vez devuelta , me va a pushear una tarketa likeada (n)
-  por medio de un await vamos a pushear 
-  Vamos a tener que convertir el objeto en un string, por medio de la función JSON.stringify
-  el await va a esperar que se resuelva la promesa y luego va a setear  */
+   el primer await espera que me devuelva la promesa y una vez devuelta , me va a pushear una tarketa likeada.
+  Vamos a tener almacenar y convertir el objeto, por medio de la función JSON.stringify
+  el llamada a la función async esta devuelve un elemento promesa. El objeto promesa es usado para computaciones asincrónicas.
+   Una promesa representa un valor que puede estar disponible ahora , en el futuro o nunca.
+    Una función async puede contener una expresión await va a esperar el código a que esta promesa se resuelva 
+    ( esta expresión pausa la ejecución de la función asincrónica y espera la resolución de la promesa),
+     ya no son mas necesarios los then. Luego reanuda la ejecucion de la función async retorna el valor resuelto-
+ Espera a que esto se ejecute para seguir ejecutando el programa con el setItem 
+ (devuelve una promesa) se procesa utilizando async/await le vamos a pasar dos paramentros, clave y valor. 
+ el llamado a la api porque se realiza desde aca para que me traiga la  info ?
+   */
 
   
 
@@ -69,20 +76,28 @@ async deletePerson(item) {
   } catch (e) {
     console.log(e)
   }
+}
 
   /* aca realizamos que las tarjetas que son dislikeadas o borradas sean guardadas en el async de la papelera
   el primer await espera que nos devuelva una promesa y una vez resuelt va a pushear una tarjeta al array de tarjetas dislikeadas
   luego realizamos una variable en la cual se va a guardar  la info que es devuelta  porque vamos a tener que convertir el objeto en un string,
    por medio de la función JSON.stringify
    una vez transforado el objeto vamos a guardarlo en el asyncStorage con la clave dislike y el valor dislike
-   una vez realizado todo esto (busca recien ahora la info de la api , la trae o como funciona )  */
-}
+   una vez realizado todo esto (busca recien ahora la info de la api , la trae o como funciona )
+   por si hay un error lo agarra para guardarlo o imprimirlo, nos va a permitir mostrárselo al usuario de forma elegante. Si el conjunto de instrucciones esta
+    envuelto dentro del bloque Try da un error , automáticamente se va a ejecutar el bloque catch para que podamos manejar ese error.  */
+   
+
 
 
 // hacete tambien vos lo de la navegacion para ir a una pagina donde mostremos todos estos likes/dislikes con un flatlist y listo medio que terminamos
 
   keyExtractor = (item, idx) => idx.toString();
+ /*  Va a recibir como parámetro el item o el id que cada vez que proceso un item el id empieza de 0 y se va a ir incrementando
+  . En este caso utilizo un id y lo paso a un string porque requiere una cadena de caracteres. */
   renderItem = ({item}) => {
+   /*  el item lo pongo entre llaves porque es un objeto y lo voy a
+     procesar en la vista con los componentes y botones que  estoy procesando. */
 
   /*   el key extractor y el render item son propiedades obligatorias para realizar un flatlist */
     return(
@@ -129,11 +144,18 @@ async deletePerson(item) {
         <View>
           <FlatList
           data={this.state.show}
+         /* a data es el arreglo con los ítems a visualizar */
           keyExtractor={this.keyExtractor}
+        /*  nos va a permitir generar la clave única para cada item a visualizar. Lo hace automáticamente. */
           renderItem={this.renderItem}
+          /* como vamos a visualizar el item */
           />
           <View>
             <TouchableOpacity onPress = {() => this.getDataFromApi()}>
+          {/*   El coponente que usaremos con mas frecuencia para capturar
+             y responder a eventos táctiles. Este componente proporciona información visual simplemente 
+             modificando la opacidad de todos sus elementos secundarios cuando se presiona. Se utiliza el evento
+             onPress */}
               <Text style={card.boton}>Empezar</Text>
             </TouchableOpacity>
           {/*   no se que pasa aca  */}

@@ -1,4 +1,3 @@
-
 import React, {Component} from "react";
 import { render } from "react-dom";
 import { 
@@ -45,16 +44,17 @@ class Screen_Likes extends Component {
    /*  aca lo que estoy haciendo es que del async storage me devuelva la informacion que le pido de las trarjetas 
    Const jsonValue = await AsyncStorage.getItem (“@storage_key”)
 Creamos la variable json value y esta va a esperar a que le de el item dependiendo de la clave que le enviemos,
-Cuando geteamos / buscamos en el almacenamiento algo que yo tenga alamacenado bajo la llave con el nombre myobject,
+Cuando geteamos / buscamos en el almacenamiento algo que yo tenga alamacenado bajo la llave con el nombre likes,
  el await retornara una promesa , un string o devuelve null , si devuelve null , lo que hago es diga que no existe la clave ,
   si jsonvalue no es nullo es que este dato contiene información y esta información yo la quiero convertir en un objeto.
 
 Lo que vamos a tener que guardar localmente en el asyncstorage localmente no va a ser todo lo que viene del fetch 
 , sino que seleccionar un conjunto. La idea es guardar los contactos en un arreglo local por medio del async storage.
  SI apago el dispositivo cuando lo vuelvo a levantar el listado de contactos se mantiene en el dispositivo.
+ 
+ Si almacenamos el objeto por medio de JSON.stringify, vamos a tener que recuperarlo por JSON.parse
+Json.parse va a tratar de convertir el string obtenido en un objeto , este proceso puede fallar por lo tanto tenemos que preguntar si tuvo éxito o no.
 
-
-este item para nosotros es un string solamente, entonces usamos json.parse
  */
       
   

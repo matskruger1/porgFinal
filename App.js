@@ -39,21 +39,11 @@ export default class App extends Component {
 					
 					<NavigationContainer>
 						<Stack.Navigator
-					/* 	initialRouteParams ="Screen"
-						drawerPosition ="left"
-						drawerType="slide"
-						drawerStyle={{ backgroundColor:"grey",
-						width:250}}
-						drawerContentOptions={{
-							activeTintColor:"white",
-							activeBackgroundColor:"black",
-							inactiveTintColor:"grey",
-							itemStyle:{borderRadius:100,
-							borderWidth:3},
-							labelStyle:{fontWeight:"bold",fontSize:20},
-							
-							
-						}} */>
+						title="Pag principal"
+						 screenOptions={{ 
+						headerstyle:{backgroundColor:"organge"},
+						headerTintColor:"white"
+						}}>
 							<Stack.Screen name="guardados" component={Screen_Likes} options ={{title:"Guardados"}} />
 							<Stack.Screen name="eliminados" component={Screen_Dislikes} options ={{title:"eliminados"}} />
 						</Stack.Navigator>

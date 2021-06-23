@@ -1,13 +1,4 @@
-/* El objetivo de esto es que si hacemos un componente Card 
-esta misma la utilizaremos en todos lados, tanto en la pantalla del import 
-o view cards o la del tacho de basura .
-Todo el trabajo que haciamos sobre la tarjeta ahora la accion la 
-vas a realizar en la pantalla
-El fectch de la api solo se realiza una vez en el import, lo que si vamos a tener
-que repetir muchas veces el async storage
 
-
-en esta pagina se importan los datos y los guardo*/
 import React, {Component} from "react";
 import { render } from "react-dom";
 import { 
@@ -21,7 +12,7 @@ import {
     StatusBar
      }
     from 'react-native';
-    import {styles} from "../Styles/styles";
+    import {styles} from "../styles/harrystyles";
     import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class Screen_Likes extends Component {
@@ -49,10 +40,7 @@ class Screen_Likes extends Component {
         }
     }
       
-   /*  saber exactamente como el async guarda los datos localmente 
-    debido a que async guarda todo como string , por lo cual el json 
-    deber reconvertirlo  */
-
+  
     keyExtractor = (item, idx) => idx.toString();
   renderItem = ({item}) => {
     return(
@@ -89,6 +77,14 @@ class Screen_Likes extends Component {
           keyExtractor={this.keyExtractor}
           renderItem={this.renderItem}
           />
+        </View>
+
+        <View style= {style.container}>
+          <Text style = {style.text}
+          onPress= {()=> this.props.navigation.navigate("Screen_Dislikes")}>Ir a la pag de dislikes </Text>
+          
+          <Text style = {style.text}
+          onPress= {()=> this.props.navigation.navigate.push("Screen_Likes")}>Ir a la pag de dislikes </Text>
         </View>
       
   

@@ -46,6 +46,9 @@ async savePerson(item){
   // kruger guardate esto en un async storage que son los likes
 }
 
+
+  
+
 async deletePerson(item) {
   try {
     await this.state.dislikes.push(item)
@@ -58,6 +61,7 @@ async deletePerson(item) {
 
   // y guardate tambien estos dislikes en el storage
 }
+
 
 // hacete tambien vos lo de la navegacion para ir a una pagina donde mostremos todos estos likes/dislikes con un flatlist y listo medio que terminamos
 
@@ -94,6 +98,8 @@ async deletePerson(item) {
     }
   
 
+
+
   render (){
     return (
     <View>
@@ -120,6 +126,18 @@ async deletePerson(item) {
           
         {/* kruger fijate como hacer para que no arranque de cero */}
       
+      {/*   <NavigationContainer>     
+      <Stack.Navigator screenOptions={{headerStyle:{backgroundColor:"orange"},
+    headerTintColor:"white"}}>
+        <Stack.Screen name="Screen 1" component = {Screen_1} options ={{title:"Menu"}}/>
+        <Stack.Screen name="Screen 2 " component = {Screen_2} options ={{title:"importar", headerTintColor:"red"}}/>
+        <Stack.Screen name="Screen 3 " component = {Screen_3} initialParams = {{valor: 0}}/>
+        <Stack.Screen name= "Screen_Import" component= {Screen_Import} options ={{title:"Importar"}}/>
+        <Stack.Screen name= "Screen_ViewImportedCards" component= {Screen_ViewImportedCards} options ={{title:" Contactos Importados"}}/>
+      </Stack.Navigator>
+
+      </NavigationContainer> */}
+
   
     </View>
   

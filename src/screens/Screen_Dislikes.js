@@ -21,7 +21,7 @@ import {
     StatusBar
      }
     from 'react-native';
-    import {styles} from "../Styles/styles";
+    import {styles} from "../styles/harrystyles";
     import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class Screen_Dislikes extends Component {
@@ -89,6 +89,14 @@ class Screen_Dislikes extends Component {
           keyExtractor={this.keyExtractor}
           renderItem={this.renderItem}
           />
+        </View>
+      
+        <View style= {style.container}>
+          <Text style = {style.text}
+          onPress= {()=> this.props.navigation.navigate("Screen_Likes")}>Ir a la pag de likes </Text>
+          
+          <Text style = {style.text}
+          onPress= {()=> this.props.navigation.navigate.push("Screen_Dislikes")}>Ir a la pag de dislikes </Text>
         </View>
       
   

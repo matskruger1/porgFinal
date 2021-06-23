@@ -1,16 +1,15 @@
-import 'react-native-gesture-handler'
 import React, { Component } from 'react';
 import { styles, header, footer, card } from './src/styles/harrystyles';
 import Header from './src/components/Header';
 import Screen from './src/screens/Screen';
 import Footer from './src/components/Footer';
 
-
+import 'react-native-gesture-handler'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import{createDrawerNavigator} from "@react-navigation/drawer";
-import {Screen_Likes }from "./src/screens/Screen_Likes";
-import {Screen_Dislikes} from "./src/screens/Screen_Dislikes";
+import Screen_Likes from "./src/screens/Screen_Likes";
+import Screen_Dislikes from "./src/screens/Screen_Dislikes";
 
 
 

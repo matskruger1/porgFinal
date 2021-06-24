@@ -1,15 +1,11 @@
 import React, {Component} from "react";
 import { render } from "react-dom";
-import Card from '../components/Card';
+import CardMini from '../components/CardMini';
 import { 
     View,
     Text,
     FlatList,
-    ScrollView,
-    StyleSheet,
-    TextInput,
-    TouchableOpacity,
-    StatusBar
+    TouchableOpacity
   } from 'react-native';
 import { card } from "../styles/harrystyles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -25,11 +21,12 @@ class Screen_Likes extends Component {
    /*  creamos un constructor que va a tener un array de las tarjetas que he likeado en la pagina principal y un array
    que me va a seguir trayendo la informacion de cada usuario ??
  */
-    componentDidMount(){
-        this.getObjectStorage() 
-    }
+   componentDidMount() {
+    this.getObjectStorage()
+    console.log(this.state.likes)
+   }
 
-    async getObjectStorage(){
+   async getObjectStorage(){
         try {
             const jsonValue = await AsyncStorage.getItem('@likes')
             if (jsonValue !== null) {
@@ -64,7 +61,7 @@ Json.parse va a tratar de convertir el string obtenido en un objeto , este proce
 
         <View>
             
-          <Card 
+          <CardMini
             name={item.name.first} 
             lastname={item.name.last} 
             id={item.login.uuid} 
@@ -89,20 +86,17 @@ Json.parse va a tratar de convertir el string obtenido en un objeto , este proce
     <View>
       
         <View>
-          <FlatList
-          data={this.state.likes} // aca si llamamo
-          keyExtractor={this.keyExtractor}
-          renderItem={this.renderItem}
-          />
+          <Text>Guardados</Text>
         </View>
-
-        {/* navegacion de pag a pagina */}
+        <TouchableOpacity onPress={this.getObjectStorage.bind(this)}>
+          <Text>Actualizar</Text>
+        </TouchableOpacity>
         <View>
-          <Text
-          onPress= {()=> this.props.navigation.navigate("Screen_Dislikes")}>Ir a la pag de dislikes </Text>
-          
-          <Text
-          onPress= {()=> this.props.navigation.navigate.push("Screen_Likes")}>Ir a la pag de dislikes </Text>
+            <FlatList
+            data={this.state.likes} // aca si llamamo
+            keyExtractor={this.keyExtractor}
+            renderItem={this.renderItem}
+            />
         </View>
       
   

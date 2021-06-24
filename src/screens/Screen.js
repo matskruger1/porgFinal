@@ -14,8 +14,7 @@ constructor() {
   this.state = {
     show: [],
     likes:[],
-    dislikes:[],
-    activity: false,
+    dislikes:[]
   }
 }  
 
@@ -28,8 +27,7 @@ adentro ponemos distintos arrays ya sea donde se van a guardar los likes , disli
 getDataFromApi() {
   getData(1)
   .then((result)=> {
-    this.setState({activity: true})
-    this.setState({show: result, activity: false})
+    this.setState({show: result})
   }) 
   
 }
@@ -39,15 +37,30 @@ el getData le pongo propiedad 1 para que me traiga unicamente una tarjeta
 entender bien que setean estos states */
 
 async componentDidMount(){ // ni idea
+  this.getDataFromApi();
   // aca deberiamos de poner el focus para que se vuelva a renderizar cada screen cuando cargamos la info
 }
 
 async savePerson(item){
   try{
-    await this.state.likes.push(item)
+    const jsonValue = await AsyncStorage.getItem('@likes')
+
+    if (jsonValue !== null) {
+        const jsonParsed = JSON.parse(jsonValue)
+        this.setState({likes: jsonParsed})
+    }
+
+    console.log(this.state.likes.length)
+
+    await this.state.likes.push(item) // guarda en el array de likes la persona
+
+    console.log(this.state.likes.length)
+
     const liked = JSON.stringify(this.state.likes)
-    await AsyncStorage.setItem('@likes', liked)
-    this.getDataFromApi()
+
+    await AsyncStorage.setItem('@likes', liked) // guarda el array en el coso (lo actualiza)
+
+    this.getDataFromApi() // llamo de vuelta a la api para que me traiga 
   } catch(e) {
     console.log(e)
   }
@@ -68,10 +81,19 @@ async savePerson(item){
 
   
 
-async deletePerson(item) {
+async deletePerson(item) { // exactamente lo mismo que el save pero en otro array
   try {
+    const jsonValue = await AsyncStorage.getItem('@dislikes')
+
+    if (jsonValue !== null) {
+      const jsonParsed = JSON.parse(jsonValue)
+      this.setState({dislikes: jsonParsed})
+    }
+
     await this.state.dislikes.push(item)
+
     const disliked = JSON.stringify(this.state.dislikes)
+
     await AsyncStorage.setItem('@dislikes', disliked)
     this.getDataFromApi()
   } catch (e) {
@@ -126,10 +148,6 @@ async deletePerson(item) {
 
           <TouchableOpacity onPress={() => this.deletePerson(item)}><Text style= {card.boton}>Eliminar</Text></TouchableOpacity>
 
-          <Text>{this.state.likes.length}</Text>
-          {/* te devuelve el largo del array de likes y del de dislikes */}
-          <Text>{this.state.dislikes.length}</Text>
-
         </View>
   
       )
@@ -152,23 +170,24 @@ async deletePerson(item) {
           /* como vamos a visualizar el item */
           />
           <View>
+
             <TouchableOpacity onPress = {() => this.getDataFromApi()}>
           {/*   El coponente que usaremos con mas frecuencia para capturar
              y responder a eventos táctiles. Este componente proporciona información visual simplemente 
              modificando la opacidad de todos sus elementos secundarios cuando se presiona. Se utiliza el evento
              onPress */}
-              <Text style={card.boton}>Empezar</Text>
+              <Text style={card.boton}>Pasar</Text>
             </TouchableOpacity>
           {/*   no se que pasa aca  */}
           </View>
           </View>
 
-          <View>
+          {/* <View>
 						<Text style={card.boton} onPress = {() => this.props.navigation.navigate("Screen_Likes")}>Ver guardados</Text>
 					</View>
 					<View>
 						<Text style={card.boton} onPress = {() => this.props.navigation.navigate("Screen_Dislikes")}>Ver eliminados</Text>
-					</View>
+					</View> */}
           
         {/* kruger fijate como hacer para que no arranque de cero */}
     

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { render } from "react-dom";
-import Card from '../components/Card';
+import CardMini from '../components/CardMini';
 import { 
     View,
     Text,
@@ -51,6 +51,14 @@ this._unsubscribe (),
 Damos de baja el evento para que luego de desmontar el componente no se invoque mas al evento.
 */
 
+    async eraseAll() {
+      await this.setState({dislikes: []})
+
+      const disliked = JSON.stringify(this.state.dislikes)
+      
+      await AsyncStorage.setItem('@dislikes', disliked)
+    }
+
     async getObjectStorage(){
         try {
             const jsonValue = await AsyncStorage.getItem('@dislikes')
@@ -85,7 +93,7 @@ Json.parse va a tratar de convertir el string obtenido en un objeto , este proce
 
         <View>
             
-          <Card 
+          <CardMini
             name={item.name.first} 
             lastname={item.name.last} 
             id={item.login.uuid} 
@@ -110,6 +118,15 @@ Json.parse va a tratar de convertir el string obtenido en un objeto , este proce
     <View>
       
         <View>
+          <Text>Eliminados</Text>
+        </View>
+        <TouchableOpacity onPress={this.getObjectStorage.bind(this)}>
+          <Text>Actualizar</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.eraseAll.bind(this)}>
+          <Text>Eliminar todos definitivamente</Text>
+        </TouchableOpacity>
+        <View>
           <FlatList
           data={this.state.dislikes} // aca si llamamo
           keyExtractor={this.keyExtractor}
@@ -117,13 +134,13 @@ Json.parse va a tratar de convertir el string obtenido en un objeto , este proce
           />
         </View>
       
-        <View>
+        {/* <View>
           <Text
           onPress= {()=> this.props.navigation.navigate("Screen_Likes")}>Ir a la pag de likes </Text>
           
           <Text
           onPress= {()=> this.props.navigation.navigate.push("Screen_Dislikes")}>Ir a la pag de dislikes </Text>
-        </View>
+        </View> */}
       
   
     </View>

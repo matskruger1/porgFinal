@@ -1,3 +1,4 @@
+import { auto } from 'async';
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -24,8 +25,6 @@ const card = StyleSheet.create({
         borderRadius: 20,
         borderColor: "#F5F5F5",
         margin: 5,
-        width: 250,
-        height: 250,
         padding: 5
     },
     image: {

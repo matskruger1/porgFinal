@@ -11,7 +11,7 @@ export default class Card extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            birthdate: moment(this.props.birthdate).format("DD/MM/YYYY"),
+            birthdate: moment(this.props.birthdate). format("DD/MM/YYYY"), 
             registro: moment(this.props.registro).format("DD/MM/YYYY")
         }
     }

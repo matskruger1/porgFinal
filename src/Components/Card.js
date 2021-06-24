@@ -33,3 +33,4 @@ export default class Card extends Component {
   )}  
 
 }
+// es la estructura de la tarjeta que vamos a visualizar en el componente del container

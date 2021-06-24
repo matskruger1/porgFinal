@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { render } from "react-dom";
-import Card from '../components/Card';
+import CardMini from '../components/CardMini';
 import { 
     View,
     Text,
@@ -27,29 +27,20 @@ class Screen_Dislikes extends Component {
     componentDidMount(){
         this.getObjectStorage() 
     }
-/* 
-    posiblemente le tengamos que pasar el evento focu
-    
-    Si bien el ciclo de la vida de los componentes se respeta, tanto el componentDidMount como el componentDidUpdate 
-    se ejecutan al inciarse el componente y al actualizarse sus estados respectivamente.
-Pero puede que no se ejecuten al momento de pasar de una pantallas a otra debido a que el Navigator
- realizar un renderizado previo para hacer mas fluida la transición entre pantalla.
-En caso de necesitar realizar una acción al ingresar a las pantallas ,
- como por ejemplo realizar un fetch o leer datos del AsyncStorage ,
- vamos a necesitar agregar un evento adicional cuando se haga foco en la pantallas.
-El evento se llama focu y se debe registrar y dar de baja cuando el cómponente se monta y se desmonta respectivamente.
 
-ComponentDidMount () {
-This._unsubscribe = navigation.addListener (“focus”, () => {
-// código a ejectuar al momento de ver la pantalla.
-}),
-Registramos el evento cuando se monta el componente , para que cada vez que tome foco se ejecute nuestra función anónima.
-}
-componentWillUnmount () {
-this._unsubscribe (),
-}
-Damos de baja el evento para que luego de desmontar el componente no se invoque mas al evento.
-*/
+    async eraseAll() {
+      await this.setState({dislikes: []})
+
+      const disliked = JSON.stringify(this.state.dislikes)
+      
+      await AsyncStorage.setItem('@dislikes', disliked)
+    }
+    /*  creamos el metodo errase all 
+    Lo que realizamos aca  es borrar todas las tarjetas que tenemos en la papelera.
+    mediante el set state voy a aplicarlo al array de dislikes
+    el objeto traido por el json lo convierto en un string por medio de stirngify y lo guardo en la 
+    variable dislike. Esto lo va a almacenar en el almacenamiento local por medio de la clave dislike y el valor 
+    entender como es que borra todo */
 
     async getObjectStorage(){
         try {
@@ -63,7 +54,8 @@ Damos de baja el evento para que luego de desmontar el componente no se invoque 
         }
     }
     
-    /*  aca lo que estoy haciendo es que del async storage me devuelva la informacion que le pido de las trarjetas 
+    /*  creamos el metodo get object storage 
+    aca lo que estoy haciendo es que del async storage me devuelva la informacion que le pido de las trarjetas 
    Const jsonValue = await AsyncStorage.getItem (“@storage_key”)
 Creamos la variable json value y esta va a esperar a que le de el item dependiendo de la clave que le enviemos,
 Cuando geteamos / buscamos en el almacenamiento algo que yo tenga alamacenado bajo la llave con el nombre dislikes,
@@ -85,7 +77,7 @@ Json.parse va a tratar de convertir el string obtenido en un objeto , este proce
 
         <View>
             
-          <Card 
+          <CardMini
             name={item.name.first} 
             lastname={item.name.last} 
             id={item.login.uuid} 
@@ -110,20 +102,31 @@ Json.parse va a tratar de convertir el string obtenido en un objeto , este proce
     <View>
       
         <View>
+          <Text>Eliminados</Text>
+        </View>
+        <TouchableOpacity onPress={this.getObjectStorage.bind(this)}>
+          <Text>Actualizar</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.eraseAll.bind(this)}>
+          <Text>Eliminar todos definitivamente</Text>
+          {/* se elimina todo utilizando el llamando al metodo y pasandole el metodo bind (no se de que sirve
+            )   */}
+        </TouchableOpacity>
+        <View>
           <FlatList
-          data={this.state.dislikes} // aca si llamamo
+          data={this.state.dislikes} // aca llamo el arreglo con los items a visualizar
           keyExtractor={this.keyExtractor}
           renderItem={this.renderItem}
           />
         </View>
       
-        <View>
+        {/* <View>
           <Text
           onPress= {()=> this.props.navigation.navigate("Screen_Likes")}>Ir a la pag de likes </Text>
           
           <Text
           onPress= {()=> this.props.navigation.navigate.push("Screen_Dislikes")}>Ir a la pag de dislikes </Text>
-        </View>
+        </View> */}
       
   
     </View>
@@ -133,7 +136,3 @@ Json.parse va a tratar de convertir el string obtenido en un objeto , este proce
 }
 
 export default Screen_Dislikes
-/* 
-todo esto lo quiero guardar en el async storage para 
-que quede local en el dispositivo */
-

@@ -25,8 +25,19 @@ class Screen_Dislikes extends Component {
     }
 
     componentDidMount(){
-        this.getObjectStorage() 
-    }
+      this.unsubscribe = this.props.navigation.addListener("focus",()=>{
+        this.getObjectStorage()
+
+      })
+    };
+  /*   componentWillUnmount(){
+      this.unsubscribe();
+    } */
+
+        /*  componentDidMount(){
+           this.getObjectStorage
+         }
+         codigo original */
 
     async eraseAll() {
       await this.setState({dislikes: []})
@@ -101,14 +112,18 @@ Json.parse va a tratar de convertir el string obtenido en un objeto , este proce
     return (
     <View>
       
-        <View>
-          <Text>Eliminados</Text>
+        <View style={card.screenBotones} >
+          <Text style ={card.title}> Papelera</Text>
         </View>
-        <TouchableOpacity onPress={this.getObjectStorage.bind(this)}>
-          <Text>Actualizar</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={this.eraseAll.bind(this)}>
-          <Text>Eliminar todos definitivamente</Text>
+      {/*   <TouchableOpacity style={card.screenBotones} onPress={this.getObjectStorage.bind(this)}>
+          <Text style= {card.boton}>Actualizar</Text>
+        </TouchableOpacity> 
+        si queremos utilizar el boton actualizar*/}
+        
+        <TouchableOpacity style={card.screenBotones}  onPress={this.eraseAll.bind(this)}>
+          <Text style= {card.boton}>Eliminar todos definitivamente</Text>
+
+          
           {/* se elimina todo utilizando el llamando al metodo y pasandole el metodo bind (no se de que sirve
             )   */}
         </TouchableOpacity>
@@ -120,13 +135,7 @@ Json.parse va a tratar de convertir el string obtenido en un objeto , este proce
           />
         </View>
       
-        {/* <View>
-          <Text
-          onPress= {()=> this.props.navigation.navigate("Screen_Likes")}>Ir a la pag de likes </Text>
-          
-          <Text
-          onPress= {()=> this.props.navigation.navigate.push("Screen_Dislikes")}>Ir a la pag de dislikes </Text>
-        </View> */}
+       
       
   
     </View>

@@ -42,7 +42,7 @@ const card = StyleSheet.create({
         borderRadius: 5,
     },
     boton: {
-        margin: "auto",
+        marginLeft: 150,
         marginTop: 20,
         width: 80,
         backgroundColor: "#FFE4DB",
@@ -50,10 +50,25 @@ const card = StyleSheet.create({
         padding: 10,
         alignItems: "center",
         justifyContent: "center",
+
         
     },
     screenBotones :{
         backgroundColor:"white"
+        
+    },
+
+    title:{
+        alignItems:"center",
+        fontSize:20,
+        justifyContent:"center",
+        marginLeft:150,
+        borderColor:"black",
+        borderWidth: 1,
+        borderRadius: 10,
+        width: 100,
+
+       
     }
 })
 
@@ -63,6 +78,7 @@ const header = StyleSheet.create({
         alignItems: "center",
         fontSize: 50, 
         padding: 30,
+        
        
 
         

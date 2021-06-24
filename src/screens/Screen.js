@@ -194,7 +194,9 @@ async deletePerson(item) { // exactamente lo mismo que el save pero en otro arra
   render (){
     return (
     <View>
-      
+        <View  style={card.screenBotones} >
+          <Text style ={card.title}>Comenza!</Text>
+        </View>
         <View style ={card.screenBotones} >
           <FlatList
           data={this.state.show}

@@ -21,10 +21,29 @@ class Screen_Likes extends Component {
    /*  creamos un constructor que va a tener un array de las tarjetas que he likeado en la pagina principal y un array
    que me va a seguir trayendo la informacion de cada usuario ??
  */
-   componentDidMount() {
+
+
+   componentDidMount(){
+    this.unsubscribe = this.props.navigation.addListener("focus",()=>{
+      this.getObjectStorage()
+      /* lo que hacemos aca es registrar el evento cuando se monta el componente
+      para que cada vez que tome foco se ejecute nuestra funcion   */
+
+    })
+  };
+
+
+
+ /*  componentWillUnmount(){
+    this.unsubscribe();
+  } 
+  Se deberia utilizar para dar de baja el evento para que luego de desmontar
+  el componente no se invoque mas al evento */
+
+   /* componentDidMount() {
     this.getObjectStorage()
     console.log(this.state.likes)
-   }
+   } codigo original */
 
  /*  utilizo el componente did mount para que se renderize el objectstorage y se pueda utilizar.
  es un método que solo se ejecuta en el cliente y se produce inmediatamente después del primer 
@@ -94,12 +113,13 @@ Json.parse va a tratar de convertir el string obtenido en un objeto , este proce
     return (
     <View>
       
-        <View>
-          <Text>Guardados</Text>
+        <View  style={card.screenBotones} >
+          <Text style ={card.title}>Personas Likeadas</Text>
         </View>
-        <TouchableOpacity onPress={this.getObjectStorage.bind(this)}>
-          <Text>Actualizar</Text>
-        </TouchableOpacity>
+        {/* <TouchableOpacity style={card.screenBotones}  onPress={this.getObjectStorage.bind(this)}>
+          <Text style= {card.boton}>Actualizar</Text>
+        </TouchableOpacity> 
+        si quiero utilizar el boton de actualizar*/}
         <View>
             <FlatList
             data={this.state.likes} // aca llamo a el arreglo con los items a visualizar

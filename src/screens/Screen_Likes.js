@@ -1,28 +1,18 @@
-/* El objetivo de esto es que si hacemos un componente Card 
-esta misma la utilizaremos en todos lados, tanto en la pantalla del import 
-o view cards o la del tacho de basura .
-Todo el trabajo que haciamos sobre la tarjeta ahora la accion la 
-vas a realizar en la pantalla
-El fectch de la api solo se realiza una vez en el import, lo que si vamos a tener
-que repetir muchas veces el async storage
-
-
-en esta pagina se importan los datos y los guardo*/
 import React, {Component} from "react";
 import { render } from "react-dom";
+import Card from '../components/Card';
 import { 
-
     View,
     Text,
+    FlatList,
     ScrollView,
     StyleSheet,
     TextInput,
     TouchableOpacity,
     StatusBar
-     }
-    from 'react-native';
-    import {styles} from "../Styles/styles";
-    import AsyncStorage from "@react-native-async-storage/async-storage";
+  } from 'react-native';
+import { card } from "../styles/harrystyles";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class Screen_Likes extends Component {
     constructor(){
@@ -32,7 +22,9 @@ class Screen_Likes extends Component {
             likes: [] // aca deberiamos tener los que habia likeado
         }
     }
-
+   /*  creamos un constructor que va a tener un array de las tarjetas que he likeado en la pagina principal y un array
+   que me va a seguir trayendo la informacion de cada usuario ??
+ */
     componentDidMount(){
         this.getObjectStorage() 
     }
@@ -48,11 +40,24 @@ class Screen_Likes extends Component {
             console.log(e)
         }
     }
-      
-   /*  saber exactamente como el async guarda los datos localmente 
-    debido a que async guarda todo como string , por lo cual el json 
-    deber reconvertirlo  */
 
+   /*  aca lo que estoy haciendo es que del async storage me devuelva la informacion que le pido de las trarjetas 
+   Const jsonValue = await AsyncStorage.getItem (“@storage_key”)
+Creamos la variable json value y esta va a esperar a que le de el item dependiendo de la clave que le enviemos,
+Cuando geteamos / buscamos en el almacenamiento algo que yo tenga alamacenado bajo la llave con el nombre likes,
+ el await retornara una promesa , un string o devuelve null , si devuelve null , lo que hago es diga que no existe la clave ,
+  si jsonvalue no es nullo es que este dato contiene información y esta información yo la quiero convertir en un objeto.
+
+Lo que vamos a tener que guardar localmente en el asyncstorage localmente no va a ser todo lo que viene del fetch 
+, sino que seleccionar un conjunto. La idea es guardar los contactos en un arreglo local por medio del async storage.
+ SI apago el dispositivo cuando lo vuelvo a levantar el listado de contactos se mantiene en el dispositivo.
+ 
+ Si almacenamos el objeto por medio de JSON.stringify, vamos a tener que recuperarlo por JSON.parse
+Json.parse va a tratar de convertir el string obtenido en un objeto , este proceso puede fallar por lo tanto tenemos que preguntar si tuvo éxito o no.
+
+ */
+      
+  
     keyExtractor = (item, idx) => idx.toString();
   renderItem = ({item}) => {
     return(
@@ -90,6 +95,15 @@ class Screen_Likes extends Component {
           renderItem={this.renderItem}
           />
         </View>
+
+        {/* navegacion de pag a pagina */}
+        <View>
+          <Text
+          onPress= {()=> this.props.navigation.navigate("Screen_Dislikes")}>Ir a la pag de dislikes </Text>
+          
+          <Text
+          onPress= {()=> this.props.navigation.navigate.push("Screen_Likes")}>Ir a la pag de dislikes </Text>
+        </View>
       
   
     </View>
@@ -99,7 +113,4 @@ class Screen_Likes extends Component {
 }
 
 export default Screen_Likes
-/* 
-todo esto lo quiero guardar en el async storage para 
-que quede local en el dispositivo */
 

@@ -13,7 +13,7 @@ constructor() {
   render (){
     return (
     <View>
-        <Text>Header</Text>
+        <Text>La Ruleta del Amor</Text>
     </View>
   
   

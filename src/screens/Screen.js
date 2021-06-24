@@ -177,7 +177,7 @@ async deletePerson(item) { // exactamente lo mismo que el save pero en otro arra
           />
           {/* componente card con cada uno de sus propiedades que son traidas */}
 
-          <TouchableOpacity onPress={() => this.savePerson(item)}><Text style= {card.boton}>Guardar</Text></TouchableOpacity>
+          <TouchableOpacity onPress={() => this.savePerson(item) }><Text style= {card.boton}>Guardar</Text></TouchableOpacity>
 
         {/*   ambos boton , el de guaradr y el de eliminar el parametro item de que sirve ?  */}
 
@@ -195,7 +195,7 @@ async deletePerson(item) { // exactamente lo mismo que el save pero en otro arra
     return (
     <View>
       
-        <View>
+        <View style ={card.screenBotones} >
           <FlatList
           data={this.state.show}
          /* data es el arreglo con los ítems a visualizar */

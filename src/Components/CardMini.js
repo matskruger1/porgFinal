@@ -28,3 +28,6 @@ export default class CardMini extends Component {
   )}  
 
 }
+
+//este componente contiene toda la estructura de las tarjetas que van a ser visualizadas en 
+// los screens de likes y dislikes

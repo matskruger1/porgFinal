@@ -16,7 +16,7 @@ renderItem = ({item}) => {
   return(
     
     <TouchableOpacity onPress={() => this.props.seleccionar(item)}>
-      {/* esto no anda TODAVÍA porque hay un problema con el this.state.color */}
+    {/*   no se que hace en el seleccionar */}
         
         <Card 
             name={item.name.first} 
@@ -46,3 +46,5 @@ renderItem = ({item}) => {
   }
 
 }
+
+//llama al componente card y el container le va a dar la estructura a visualizar en el screen

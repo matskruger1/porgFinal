@@ -34,3 +34,7 @@ export default class Card extends Component {
 
 }
 // es la estructura de la tarjeta que vamos a visualizar en el componente del container
+
+// el componente es la estructura padre de la tarjeta.
+
+// En props es lo que me viene al componente, lo que le mande y lo que me vino .state está en el estado. En el estado aplicamos la librería moment para emprolijar el resultado de fechas en la tarjeta. Si yo quiero usar el formato que viene de props, me va a venir como estaba automáticamente preestablecido antes de usar la librería, es decir desprolijo. Ese props sigue existiendo, pero yo lo clone al aplicarle la librería y lo emprolije, pero en vez de llamarse . props ahora se llama .state. Sigue existiendo el otro pero solo quiero llamar al clonado emprolijado que se encuentra en .state

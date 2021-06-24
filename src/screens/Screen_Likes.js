@@ -43,7 +43,7 @@ class Screen_Likes extends Component {
         }
     }
 
-   /* invocamos la ... 
+   /* invocamos el metodo
     aca lo que estoy haciendo es que del async storage me devuelva la informacion que le pido de las trarjetas 
    Const jsonValue = await AsyncStorage.getItem (“@storage_key”)
 Creamos la variable json value y esta va a esperar a que le de el item dependiendo de la clave que le enviemos,

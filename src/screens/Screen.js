@@ -5,7 +5,7 @@ import { getData } from '../api/RandomUser';
 import { card } from '../styles/harrystyles';
 
 
-import { View, ActivityIndicator, TouchableOpacity, Text, FlatList, TextInput,Image } from "react-native";
+import { View, ActivityIndicator, TouchableOpacity, Text, FlatList, TextInput } from "react-native";
 
 export default class Screen extends Component {
   
@@ -37,7 +37,7 @@ getDataFromApi() {
 el getData le pongo propiedad 1 para que me traiga unicamente una tarjeta . Luego realizo un then con el evento setState
 para que los resultados de la api sean guaradados en el array de show */
 
-async componentDidMount(){
+async componentDidMount(){ // ni idea
   this.getDataFromApi();
   /*  utilizamos el llamado a la api para que se renderize en el cliente. es un método que solo se ejecuta en el cliente y 
   se produce inmediatamente después del primer renderizado del componente. Una vez se ejecuta este método 
@@ -194,6 +194,9 @@ async deletePerson(item) { // exactamente lo mismo que el save pero en otro arra
   render (){
     return (
     <View>
+        <View  style={card.screenBotones} >
+          <Text style ={card.title}>Comenza!</Text>
+        </View>
         <View style ={card.screenBotones} >
           <FlatList
           data={this.state.show}
@@ -206,12 +209,22 @@ async deletePerson(item) { // exactamente lo mismo que el save pero en otro arra
           <View>
 
             <TouchableOpacity onPress = {() => this.getDataFromApi()}>
+          {/*   El coponente que usaremos con mas frecuencia para capturar
+             y responder a eventos táctiles. Este componente proporciona información visual simplemente 
+             modificando la opacidad de todos sus elementos secundarios cuando se presiona. Se utiliza el evento
+             onPress. Este boton cuando lo tocamos  nos va a traer la informacion de la api y al tocar el boton
+             nos va a traer nuevamente la info. Como digo que me la randomiza ?*/}
               <Text style={card.boton}>Pasar</Text>
             </TouchableOpacity>
           </View>
-          
           </View>
-         
+
+          {/* <View>
+						<Text style={card.boton} onPress = {() => this.props.navigation.navigate("Screen_Likes")}>Ver guardados</Text>
+					</View>
+					<View>
+						<Text style={card.boton} onPress = {() => this.props.navigation.navigate("Screen_Dislikes")}>Ver eliminados</Text>
+					</View> */}
       
       
     

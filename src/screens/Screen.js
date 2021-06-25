@@ -5,7 +5,7 @@ import { getData } from '../api/RandomUser';
 import { card } from '../styles/harrystyles';
 
 
-import { View, ActivityIndicator, TouchableOpacity, Text, FlatList, TextInput } from "react-native";
+import { View, ActivityIndicator, TouchableOpacity, Text, FlatList, TextInput,Image } from "react-native";
 
 export default class Screen extends Component {
   
@@ -217,14 +217,21 @@ async deletePerson(item) { // exactamente lo mismo que el save pero en otro arra
               <Text style={card.boton}>Pasar</Text>
             </TouchableOpacity>
           </View>
-          </View>
 
-          {/* <View>
-						<Text style={card.boton} onPress = {() => this.props.navigation.navigate("Screen_Likes")}>Ver guardados</Text>
-					</View>
-					<View>
-						<Text style={card.boton} onPress = {() => this.props.navigation.navigate("Screen_Dislikes")}>Ver eliminados</Text>
-					</View> */}
+          <View style={card.burguerContainer}>          
+            <TouchableOpacity onPress= {()=> this.props.navigation.openDrawer()}>
+            <View style={card.burguerBotton} >
+              <Image style={{width:60, height:60}} source={require("../img/menu.png")}/>
+              <Text style={card.burguerText}>=</Text>
+              </View>
+            </TouchableOpacity>
+            </View>
+
+
+         
+
+          </View>
+         
       
       
     

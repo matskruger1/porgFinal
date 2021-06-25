@@ -69,6 +69,26 @@ const card = StyleSheet.create({
         width: 100,
 
        
+    },
+    burguerBotton:{
+        width:60,
+        height:60,
+        borderRadius:10,
+        alignItems:"center",
+        justifyContent:"center",
+
+
+    },
+
+    burguerText:{
+        fontSize:30,
+        color:"white"
+    },
+    burguerContainer:{
+        position:"absolute",
+        left:5,
+        top:10,
+
     }
 })
 

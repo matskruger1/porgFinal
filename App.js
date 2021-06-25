@@ -31,7 +31,10 @@ export default class App extends Component {
 							<Header/>
 						</View>
 
-						<Drawer.Navigator initialRouteName="Tarjeta nueva">
+						<Drawer.Navigator initialRouteName="Tarjeta nueva"
+						drawerType="slide"
+						drawerPosition="left"
+						>
 							<Drawer.Screen name="Tarjeta nueva" component={Screen} />
 							<Drawer.Screen name="Contactos Guardados" component={Screen_Likes} />
 							<Drawer.Screen name="Contactos Eliminados" component={Screen_Dislikes} />

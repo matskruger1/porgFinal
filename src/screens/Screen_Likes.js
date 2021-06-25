@@ -89,6 +89,7 @@ Json.parse va a tratar de convertir el string obtenido en un objeto , este proce
         <View>
             {/*  aca utilizamos el un componente parecido a card pero este este en mini para visualizar en esta
             pagina todas las tarjetas likeades que tenemos  */}
+            
           <CardMini
             name={item.name.first} 
             lastname={item.name.last} 

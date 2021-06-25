@@ -20,12 +20,27 @@ class Screen_Dislikes extends Component {
         super();
         this.state={
             users:[],
-            dislikes: [] // aca deberiamos tener los que habia dislikeado
+            dislikes: []
         }
     }
 
     componentDidMount(){
-        this.getObjectStorage();
+      this.unsubscribe = this.props.navigation.addListener("focus",()=>{
+        this.getObjectStorage()
+  
+      })
+    };
+
+    async filterDislikes(input) {
+      let filter = this.state.dislikes.filter((dislike) => {
+        if (dislike.name.first.toLowerCase().includes(input.toLowerCase())
+        || dislike.name.last.toLowerCase().includes(input.toLowerCase())
+        || dislike.location.country.toLowerCase().includes(input.toLowerCase())) {
+          return dislike
+        }
+      })
+ 
+      this.setState({dislikes: filter})
     }
 
     async eraseAll() {
@@ -35,12 +50,6 @@ class Screen_Dislikes extends Component {
       
       await AsyncStorage.setItem('@dislikes', disliked)
     }
-    /*  creamos el metodo errase all 
-    Lo que realizamos aca  es borrar todas las tarjetas que tenemos en la papelera.
-    mediante el set state voy a aplicarlo al array de dislikes
-    el objeto traido por el json lo convierto en un string por medio de stirngify y lo guardo en la 
-    variable dislike. Esto lo va a almacenar en el almacenamiento local por medio de la clave dislike y el valor 
-    entender como es que borra todo */
 
     async getObjectStorage(){
         try {
@@ -53,23 +62,6 @@ class Screen_Dislikes extends Component {
             console.log(e)
         }
     }
-    
-    /*  creamos el metodo get object storage 
-    aca lo que estoy haciendo es que del async storage me devuelva la informacion que le pido de las trarjetas 
-   Const jsonValue = await AsyncStorage.getItem (“@storage_key”)
-Creamos la variable json value y esta va a esperar a que le de el item dependiendo de la clave que le enviemos,
-Cuando geteamos / buscamos en el almacenamiento algo que yo tenga alamacenado bajo la llave con el nombre dislikes,
- el await retornara una promesa , un string o devuelve null , si devuelve null , lo que hago es diga que no existe la clave ,
-  si jsonvalue no es nullo es que este dato contiene información y esta información yo la quiero convertir en un objeto.
-
-Lo que vamos a tener que guardar localmente en el asyncstorage localmente no va a ser todo lo que viene del fetch 
-, sino que seleccionar un conjunto. La idea es guardar los contactos en un arreglo local por medio del async storage.
- SI apago el dispositivo cuando lo vuelvo a levantar el listado de contactos se mantiene en el dispositivo.
- 
- Si almacenamos el objeto por medio de JSON.stringify, vamos a tener que recuperarlo por JSON.parse
-Json.parse va a tratar de convertir el string obtenido en un objeto , este proceso puede fallar por lo tanto tenemos que preguntar si tuvo éxito o no.
-
- */
 
     keyExtractor = (item, idx) => idx.toString();
   renderItem = ({item}) => {
@@ -104,20 +96,18 @@ Json.parse va a tratar de convertir el string obtenido en un objeto , este proce
         <View style={card.screenBotones} >
           <Text style ={card.title}> Papelera</Text>
         </View>
-        <TouchableOpacity style={card.screenBotones} onPress={this.getObjectStorage.bind(this)}>
-          <Text style= {card.boton}>Actualizar</Text>
-        </TouchableOpacity>
         
         <TouchableOpacity style={card.screenBotones}  onPress={this.eraseAll.bind(this)}>
           <Text style= {card.boton}>Eliminar todos definitivamente</Text>
-
-          
-          {/* se elimina todo utilizando el llamando al metodo y pasandole el metodo bind (no se de que sirve
-            )   */}
         </TouchableOpacity>
         <View>
+          <View>
+            <TextInput onChangeText={value => this.filterDislikes(value)}></TextInput>
+            </View>
+        </View>
+        <View>
           <FlatList
-          data={this.state.dislikes} // aca llamo el arreglo con los items a visualizar
+          data={this.state.dislikes}
           keyExtractor={this.keyExtractor}
           renderItem={this.renderItem}
           />

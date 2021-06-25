@@ -13,7 +13,7 @@ const card = StyleSheet.create({
         flex: 1,
         justifyContent: 'center', 
         alignItems: 'center',
-        padding: 15,
+        padding: 30,
         backgroundColor:"white"
     },
     item: {
@@ -44,6 +44,7 @@ const card = StyleSheet.create({
     boton: {
         marginLeft: 150,
         marginTop: 20,
+        marginBottom: 20,
         width: 80,
         backgroundColor: "#FFE4DB",
         borderRadius: 8,
@@ -54,8 +55,17 @@ const card = StyleSheet.create({
         
     },
     screenBotones :{
-        backgroundColor:"white"
-        
+        backgroundColor:"white",
+        justifyContent: 'center', 
+        alignItems: 'center',
+        margin: "auto",
+    },
+    input :{
+        marginTop: 20,
+        marginLeft: 50,
+        marginRight: 50,
+        padding: 10,
+        backgroundColor: "white",
     },
 
     title:{
@@ -98,10 +108,7 @@ const header = StyleSheet.create({
         alignItems: "center",
         fontSize: 50, 
         padding: 30,
-        
-       
-
-        
+        marginTop: 20,
     },
 })
 

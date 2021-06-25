@@ -25,19 +25,8 @@ class Screen_Dislikes extends Component {
     }
 
     componentDidMount(){
-      this.unsubscribe = this.props.navigation.addListener("focus",()=>{
-        this.getObjectStorage()
-
-      })
-    };
-  /*   componentWillUnmount(){
-      this.unsubscribe();
-    } */
-
-        /*  componentDidMount(){
-           this.getObjectStorage
-         }
-         codigo original */
+        this.getObjectStorage();
+    }
 
     async eraseAll() {
       await this.setState({dislikes: []})
@@ -115,10 +104,9 @@ Json.parse va a tratar de convertir el string obtenido en un objeto , este proce
         <View style={card.screenBotones} >
           <Text style ={card.title}> Papelera</Text>
         </View>
-      {/*   <TouchableOpacity style={card.screenBotones} onPress={this.getObjectStorage.bind(this)}>
+        <TouchableOpacity style={card.screenBotones} onPress={this.getObjectStorage.bind(this)}>
           <Text style= {card.boton}>Actualizar</Text>
-        </TouchableOpacity> 
-        si queremos utilizar el boton actualizar*/}
+        </TouchableOpacity>
         
         <TouchableOpacity style={card.screenBotones}  onPress={this.eraseAll.bind(this)}>
           <Text style= {card.boton}>Eliminar todos definitivamente</Text>

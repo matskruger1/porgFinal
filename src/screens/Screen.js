@@ -37,7 +37,7 @@ getDataFromApi() {
 el getData le pongo propiedad 1 para que me traiga unicamente una tarjeta . Luego realizo un then con el evento setState
 para que los resultados de la api sean guaradados en el array de show */
 
-async componentDidMount(){ // ni idea
+async componentDidMount(){
   this.getDataFromApi();
   /*  utilizamos el llamado a la api para que se renderize en el cliente. es un método que solo se ejecuta en el cliente y 
   se produce inmediatamente después del primer renderizado del componente. Una vez se ejecuta este método 
@@ -194,9 +194,6 @@ async deletePerson(item) { // exactamente lo mismo que el save pero en otro arra
   render (){
     return (
     <View>
-        <View  style={card.screenBotones} >
-          <Text style ={card.title}>Comenza!</Text>
-        </View>
         <View style ={card.screenBotones} >
           <FlatList
           data={this.state.show}
@@ -209,27 +206,10 @@ async deletePerson(item) { // exactamente lo mismo que el save pero en otro arra
           <View>
 
             <TouchableOpacity onPress = {() => this.getDataFromApi()}>
-          {/*   El coponente que usaremos con mas frecuencia para capturar
-             y responder a eventos táctiles. Este componente proporciona información visual simplemente 
-             modificando la opacidad de todos sus elementos secundarios cuando se presiona. Se utiliza el evento
-             onPress. Este boton cuando lo tocamos  nos va a traer la informacion de la api y al tocar el boton
-             nos va a traer nuevamente la info. Como digo que me la randomiza ?*/}
               <Text style={card.boton}>Pasar</Text>
             </TouchableOpacity>
           </View>
-
-          <View style={card.burguerContainer}>          
-            <TouchableOpacity onPress= {()=> this.props.navigation.openDrawer()}>
-            <View style={card.burguerBotton} >
-              <Image style={{width:60, height:60}} source={require("../img/menu.png")}/>
-              <Text style={card.burguerText}>=</Text>
-              </View>
-            </TouchableOpacity>
-            </View>
-
-
-         
-
+          
           </View>
          
       

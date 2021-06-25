@@ -27,23 +27,23 @@ export default class App extends Component {
 				<NavigationContainer>
 						<View style={styles.layout}>
 
-						<View style={header.contentStyle}>
-							<Header/>
-						</View>
+							<View style={header.contentStyle}>
+								<Header/>
+							</View>
 
-						<Drawer.Navigator initialRouteName="Tarjeta nueva"
-						drawerType="slide"
-						drawerPosition="left"
-						>
-							<Drawer.Screen name="Tarjeta nueva" component={Screen} />
-							<Drawer.Screen name="Contactos Guardados" component={Screen_Likes} />
-							<Drawer.Screen name="Contactos Eliminados" component={Screen_Dislikes} />
-							<Drawer.Screen name="Nosotros" component={About} />
-						</Drawer.Navigator>
+							<Drawer.Navigator initialRouteName="Tarjeta nueva"
+							drawerType="slide"
+							drawerPosition="left"
+							>
+								<Drawer.Screen name="Tarjeta nueva" component={Screen} />
+								<Drawer.Screen name="Contactos Guardados" component={Screen_Likes} />
+								<Drawer.Screen name="Contactos Eliminados" component={Screen_Dislikes} />
+								<Drawer.Screen name="Nosotros" component={About} />
+							</Drawer.Navigator>
 
-						<View style={footer.contentStyle}>
-							<Footer/>
-						</View>
+							<View style={footer.contentStyle}>
+								<Footer/>
+							</View>
 
 						</View>
 				</NavigationContainer>

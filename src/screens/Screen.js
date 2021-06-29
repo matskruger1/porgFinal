@@ -41,7 +41,7 @@ async savePerson(item){
 
     console.log(this.state.likes.length)
 
-    await this.state.likes.push(item)
+    this.state.likes.push(item)
 
     console.log(this.state.likes.length)
 

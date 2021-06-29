@@ -86,13 +86,13 @@ class Screen_Likes extends Component {
         <View  style={card.screenBotones} >
           <Text style ={card.title}>Personas Likeadas</Text>
         </View>
-        <View style={{marginBottom: '10'}}>
+        <View style={{marginBottom: 10}}>
           <View>
             <Text style={card.input}>Buscar</Text>
             <TextInput style={card.input} onChangeText={value => this.filterLikes(value)}></TextInput>
             </View>
         </View>
-        <View style={{marginTop: '10'}}>
+        <View style={{marginTop: 10}}>
             <FlatList
             data={this.state.likes}
             keyExtractor={this.keyExtractor}

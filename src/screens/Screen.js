@@ -26,30 +26,38 @@ getDataFromApi() {
   
 }
 
+
 async componentDidMount(){
   this.getDataFromApi();
 }
 
+
 async savePerson(item){
   try{
+ 
     const jsonValue = await AsyncStorage.getItem('@likes')
-
+   
     if (jsonValue !== null) {
         const jsonParsed = JSON.parse(jsonValue)
         this.setState({likes: jsonParsed})
     }
-
+  
     console.log(this.state.likes.length)
 
     await this.state.likes.push(item)
+ 
 
     console.log(this.state.likes.length)
 
     const liked = JSON.stringify(this.state.likes)
+   
+  
 
     await AsyncStorage.setItem('@likes', liked)
+  
 
     this.getDataFromApi() 
+  
   } catch(e) {
     console.log(e)
   }

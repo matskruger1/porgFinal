@@ -16,7 +16,7 @@ import {card} from "../styles/harrystyles";
     import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class Screen_Dislikes extends Component {
-    constructor(){
+    constructor(){3333333
         super();
         this.state={
             users:[],

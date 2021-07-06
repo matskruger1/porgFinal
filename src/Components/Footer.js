@@ -13,7 +13,7 @@ constructor() {
     return (
 
     <View>
-        <Text>Encontra al amor de tu vida</Text>
+        <Text>2021</Text>
     </View>
 
   )}  

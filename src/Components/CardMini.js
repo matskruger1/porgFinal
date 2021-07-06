@@ -19,7 +19,7 @@ export default class CardMini extends Component {
   render (){
     return (
         <View style={card.container}>
-            <View style={card.card}>
+            <View style={card.container}>
                 <Image style={card.image} source={{uri: this.props.image}}></Image>
                 <View style={card.item}><Text>{this.props.name} {this.props.lastname}</Text></View>
             </View>
